@@ -1,0 +1,128 @@
+    1  pwd
+    2  pwd
+    3  ls
+    4  code .
+    5  cd ~
+    6  code .
+    7  lsb_release -a
+    8  cd ~
+    9  mk dir rna_seq_project
+   10  mkdir rna_seq_project
+   11  cd rna_seq_project/
+   12  mkdir raw fastq qc trimmed aligned counts images documentation scripts results
+   13  mkdir data
+   14  nano data/sample_info.txt
+   15  sudo apt update
+   16  sudo apt upgrade -y
+   17  sudo apt install -y build-essential wget unzip git curl
+   18  git init
+   19  git add.  git commit -m "Initial project setup with folder structure and metadata"
+   20  git add .  git commit -m "Initial project setup with folder structure and metadata"
+   21  git add .
+   22  git commit -m "Initial project setup with folder structure and metadata"
+   23  git config --global user.name "Sathya"
+   24  git config --global user.email "sathyaviswanth2782@gmail.com"
+   25  git add .
+   26  git commit -m "Initial project setup with folder structure and metadata"
+   27  cd ~
+   28  ls
+   29  rm -r rna_seq_project
+   30  rm -rf rna_seq_project
+   31  ls
+   32  cd ~
+   33  sudo apt update/sudo apt upgrade -y/sudo apt install -y build essential wget curl unzip git nano
+   34  sudo apt update
+   35  sudo apt upgrade -y
+   36  sudo apt install -y build-essential wget curl unzip git nano
+   37  wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+   38  bash Miniconda3-latest-Linux-x86_64.sh
+   39  conda activate rnaseq_env
+   40  cd ~/rna_seq_analysis
+   41  fastqc --version
+   42  hisat2 --version
+   43  samtools --version
+   44  featureCounts -v
+   45  prefetch --version
+   46  vdb-config --interactive
+   47  cd raw
+   48  cat samples.txt
+   49  prefetch SRR20982987
+   50  cd ~
+   51  conda activate rnaseq_env
+   52  cd rna_seq_analysis
+   53  cd raw
+   54  vdb-config --interactive
+   55  cat samples.txt
+   56  prefetch SRR20982987
+   57  wget -nc ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR209/087/SRR20982987/SRR20982987_1.fastq.gz
+   58  wget -nc ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR209/087/SRR20982987/SRR20982987_2.fastq.gz
+   59  cd ~
+   60  cd rna_seq_analysis/fastq
+   61  wget -nc ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR209/087/SRR20982987/SRR20982987_1.fastq.gz
+   62  wget -c https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR209/087/SRR20982987/SRR20982987_1.fastq.gz
+   63  wget -nc ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR209/087/SRR20982987/SRR20982987_1.fastq.gz
+   64  cd .
+   65  cd ~
+   66  cd rna_seq_analysis/
+   67  rm -rf *
+   68  rm -rf .git
+   69  mkdir -p raw fastq qc trimmed aligned counts results logs reference data scripts documentation images
+   70  touch raw/.gitkeep fastq/.gitkeep qc/.gitkeep trimmed/.gitkeep aligned/.gitkeep counts/.gitkeep results/.gitkeep logs/.gitkeep reference/.gitkeep data/.gitkeep scripts/.gitkeep documentation/.gitkeep images/.gitkeep
+   71  git init
+   72  git branch -M main
+   73  git add .
+   74  git commit -m "Reset project with clean structure"
+   75  git remote add origin https://github.com/sathyaviswanath/Breast_cancer_rnaseq_analysis.git.git
+   76  git push -u origin main --force
+   77  git remote add origin https://github.com/sathyaviswanath/Breast_cancer_rnaseq_analysis.git
+   78  git remote remove origin
+   79  git remote add origin https://github.com/sathyaviswanath/Breast_cancer_rnaseq_analysis.git
+   80  git push -u origin main --force
+   81  cd ~
+   82  conda activate rnaseq_env
+   83  cd rna_seq_analysis
+   84  cd data
+   85  nano metadata.csv
+   86  cd..
+   87  cd ..
+   88  cd fastq
+   89  wget -nc ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR247/044/SRR24709144/SRR24709144_1.fastq.gz
+   90  wget -nc ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR247/044/SRR24709144/SRR24709144_2.fastq.gz
+   91  ls -lh
+   92  gzip -t SRR24709144_1.fastq.gz
+   93  rm *.fastq.gz
+   94  cd ..
+   95  cd raw
+   96  prefetch SRR24709144
+   97  sudo apt install aria2 -y
+   98  aria2c -x 8 -s 8 ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR247/044/SRR24709144/SRR24709144_1.fastq.gz
+   99  aria2c -x 8 -s 8 ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR247/044/SRR24709144/SRR24709144_2.fastq.gz
+  100  ls -lh
+  101  mv SRR24709144_*.fastq.gz ../fastq/
+  102  cd ..
+  103  cd fastq
+  104  ls -lh
+  105  cd ..
+  106  cd raw
+  107  rm -r SRR24709144
+  108  ls -lh
+  109  cd ..
+  110  cd fastq
+  111  aria2c -x 8 -s 8 ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR247/046/SRR24709146/SRR24709146_1.fastq.gz
+  112  aria2c -x 8 -s 8 ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR247/046/SRR24709146/SRR24709146_2.fastq.gz
+  113  aria2c -x 8 -s 8 ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR247/072/SRR24709172/SRR24709172_1.fastq.gz
+  114  aria2c -x 8 -s 8 ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR247/072/SRR24709172/SRR24709172_2.fastq.gz
+  115  ls -lh
+  116  aria2c -x 8 -s 8 ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR247/065/SRR24709165/SRR24709165_1.fastq.gz
+  117  aria2c -x 8 -s 8 ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR247/065/SRR24709165/SRR24709165_2.fastq.gz
+  118  ls -lh
+  119  rm SRR24709146_fastq.1.gz
+  120  rm SRR24709146_*.fastq.1.gz
+  121  ls -lh
+  122  nano .gitignore
+  123  git add .
+  124  git commit -m "Cleaned dataset and removed duplicate files"
+  125  git push
+  126  cd ~
+  127  cd rna_seq_analysis/
+  128  history > commands_history.txt
