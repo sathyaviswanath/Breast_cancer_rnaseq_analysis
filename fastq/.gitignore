@@ -1,0 +1,5 @@
+fastq/
+raw/
+*.fastq.gz
+*.sra
+
