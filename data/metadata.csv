@@ -1,0 +1,5 @@
+sample_id,condition,replicate
+SRR24709144,tumor,1
+SRR24709146,tumor,2
+SRR24709165,normal,1
+SRR24709172,normal,2
