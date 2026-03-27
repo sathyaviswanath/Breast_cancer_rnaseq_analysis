@@ -1,5 +1,8 @@
-fastq/
-trimmed/
-raw/
 *.fastq.gz
-*.sra
+*.bam
+*.sam
+*.gtf
+*.fa
+*.ht2
+*.zip
+*.tar.gz

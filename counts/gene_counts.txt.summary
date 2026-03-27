@@ -1,0 +1,15 @@
+Status	aligned/SRR24709144_sorted.bam	aligned/SRR24709146_sorted.bam	aligned/SRR24709165_sorted.bam	aligned/SRR24709172_sorted.bam
+Assigned	76371	78650	86205	78043
+Unassigned_Unmapped	305815	303260	295294	304710
+Unassigned_Read_Type	0	0	0	0
+Unassigned_Singleton	0	0	0	0
+Unassigned_MappingQuality	0	0	0	0
+Unassigned_Chimera	0	0	0	0
+Unassigned_FragmentLength	0	0	0	0
+Unassigned_Duplicate	0	0	0	0
+Unassigned_MultiMapping	6224	6633	5171	5622
+Unassigned_Secondary	0	0	0	0
+Unassigned_NonSplit	0	0	0	0
+Unassigned_NoFeatures	8762	7965	6821	7421
+Unassigned_Overlapping_Length	0	0	0	0
+Unassigned_Ambiguity	6740	7660	9831	7750

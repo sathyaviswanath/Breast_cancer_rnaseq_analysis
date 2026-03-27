@@ -1,0 +1,5 @@
+sample condition
+SRR24709144 Tumor
+SRR24709146 Normal
+SRR24709165 Tumor
+SRR24709172 Normal
