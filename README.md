@@ -109,7 +109,7 @@ rna_seq_analysis/
 ├── raw/               # Raw data
 ├── reference/         # Genome + index files
 ├── results/           # Final results (DEGs)
-├── scripts/           # Commands / pipeline scripts
+├── scripts/           # bash script
 ├── subset/            # Subsampled reads
 ├── trimmed/           # Cleaned reads
 ```
