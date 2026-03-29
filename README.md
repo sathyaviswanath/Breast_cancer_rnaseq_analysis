@@ -102,7 +102,7 @@ This dataset investigates how circadian clock gene activity influences breast ca
 rna_seq_analysis/
 ├── aligned/           # BAM files
 ├── counts_data/       # Raw count files + metadata
-├── documentation/     # Notes / explanations
+├── documentation/     # commands + results interpretation
 ├── fastq/             # Downloaded FASTQ files
 ├── images/            # Plots (PCA, Volcano, Heatmap)
 ├── qc/                # Quality reports
