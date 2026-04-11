@@ -136,7 +136,7 @@ rule deseq2:
         counts="../counts/clean_counts.txt",
         metadata="../counts/metadata.txt"
     output:
-        "../counts/deseq2_results.csv",
+        "../results/deseq2_results.csv",
         "../images/volcano_plot.png",
         "../images/pca_plot.png",
         "../images/heatmap.png"
