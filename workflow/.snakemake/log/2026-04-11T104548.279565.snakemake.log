@@ -1,0 +1,37 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job       count
+------  -------
+all           1
+deseq2        1
+total         2
+
+Select jobs to execute...
+
+[Sat Apr 11 10:45:48 2026]
+rule deseq2:
+    input: ../counts/clean_counts.txt, ../counts/metadata.txt
+    output: ../results/deseq2_results.csv, ../images/volcano_plot.png, ../images/pca_plot.png, ../images/heatmap.png
+    jobid: 22
+    reason: Missing output files: ../images/pca_plot.png, ../images/volcano_plot.png, ../images/heatmap.png, ../results/deseq2_results.csv
+    resources: tmpdir=/tmp
+
+[Sat Apr 11 10:46:00 2026]
+Finished job 22.
+1 of 2 steps (50%) done
+Select jobs to execute...
+
+[Sat Apr 11 10:46:00 2026]
+localrule all:
+    input: ../aligned/SRR24709144_sorted.bam, ../aligned/SRR24709146_sorted.bam, ../aligned/SRR24709165_sorted.bam, ../aligned/SRR24709172_sorted.bam, ../counts/gene_counts.txt, ../results/deseq2_results.csv, ../images/volcano_plot.png, ../images/pca_plot.png, ../images/heatmap.png
+    jobid: 0
+    reason: Input files updated by another job: ../images/heatmap.png, ../images/pca_plot.png, ../images/volcano_plot.png, ../results/deseq2_results.csv
+    resources: tmpdir=/tmp
+
+[Sat Apr 11 10:46:00 2026]
+Finished job 0.
+2 of 2 steps (100%) done
+Complete log: .snakemake/log/2026-04-11T104548.279565.snakemake.log

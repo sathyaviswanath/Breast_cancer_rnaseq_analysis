@@ -1,0 +1,35 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job       count
+------  -------
+all           1
+deseq2        1
+total         2
+
+Select jobs to execute...
+
+[Sat Apr 11 10:42:34 2026]
+rule deseq2:
+    input: ../counts/clean_counts.txt, ../counts/metadata.txt
+    output: ../results/deseq2_results.csv, ../images/volcano_plot.png, ../images/pca_plot.png, ../images/heatmap.png
+    jobid: 22
+    reason: Code has changed since last execution
+    resources: tmpdir=/tmp
+
+[Sat Apr 11 10:42:34 2026]
+Error in rule deseq2:
+    jobid: 22
+    input: ../counts/clean_counts.txt, ../counts/metadata.txt
+    output: ../results/deseq2_results.csv, ../images/volcano_plot.png, ../images/pca_plot.png, ../images/heatmap.png
+
+RuleException:
+CalledProcessError in file /home/sathya/rna_seq_analysis/workflow/Snakefile, line 144:
+Command 'set -euo pipefail;  Rscript --vanilla /home/sathya/rna_seq_analysis/workflow/.snakemake/scripts/tmp17c1a5nn.deseq2.R' returned non-zero exit status 127.
+  File "/home/sathya/rna_seq_analysis/workflow/Snakefile", line 144, in __rule_deseq2
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2026-04-11T104234.043210.snakemake.log
