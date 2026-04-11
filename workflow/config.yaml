@@ -1,0 +1,11 @@
+samples:
+  - SRR24709144
+  - SRR24709146
+  - SRR24709165
+  - SRR24709172
+
+threads: 1
+
+reference:
+  index: reference/chr1_2_index
+  gtf: reference/Homo_sapiens.GRCh38.110.gtf

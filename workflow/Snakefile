@@ -1,0 +1,144 @@
+configfile: "config.yaml"
+
+SAMPLES = config["samples"]
+
+# FINAL TARGET
+
+rule all:
+    input:
+        expand("../aligned/{sample}_sorted.bam", sample=SAMPLES),
+        "../counts/gene_counts.txt",
+        "../counts/deseq2_results.csv",
+        "../images/volcano_plot.png",
+        "../images/pca_plot.png",
+        "../images/heatmap.png"
+
+# QC
+
+rule fastqc:
+    input:
+        r1="../fastq/{sample}_1.fastq.gz",
+        r2="../fastq/{sample}_2.fastq.gz"
+    output:
+        "../qc/{sample}_1_fastqc.html",
+        "../qc/{sample}_2_fastqc.html"
+    shell:
+        "fastqc {input.r1} {input.r2} -o ../qc/"
+
+# TRIMMING
+
+rule fastp:
+    input:
+        r1="../fastq/{sample}_1.fastq.gz",
+        r2="../fastq/{sample}_2.fastq.gz"
+    output:
+        r1="../trimmed/{sample}_1_trimmed.fastq.gz",
+        r2="../trimmed/{sample}_2_trimmed.fastq.gz"
+    shell:
+        """
+        fastp -i {input.r1} -I {input.r2} \
+        -o {output.r1} -O {output.r2}
+        """
+
+# SUBSET (memory optimization)
+
+rule subset:
+    input:
+        r1="../trimmed/{sample}_1_trimmed.fastq.gz",
+        r2="../trimmed/{sample}_2_trimmed.fastq.gz"
+    output:
+        r1="../subset/{sample}_1.fastq",
+        r2="../subset/{sample}_2.fastq"
+    shell:
+        """
+        seqtk sample -s100 {input.r1} 200000 > {output.r1}
+        seqtk sample -s100 {input.r2} 200000 > {output.r2}
+        """
+
+# ALIGNMENT
+
+rule align:
+    input:
+        r1="../subset/{sample}_1.fastq",
+        r2="../subset/{sample}_2.fastq"
+    output:
+        "../aligned/{sample}.sam"
+    params:
+        index=config["reference"]["index"]
+    shell:
+        """
+        hisat2 -p 1 -x {params.index} \
+        -1 {input.r1} -2 {input.r2} \
+        -S {output}
+        """
+
+# SAM → BAM
+
+rule sam_to_bam:
+    input:
+        "../aligned/{sample}.sam"
+    output:
+        "../aligned/{sample}.bam"
+    shell:
+        "samtools view -@ 1 -bS {input} > {output}"
+
+# SORT BAM
+
+rule sort_bam:
+    input:
+        "../aligned/{sample}.bam"
+    output:
+        "../aligned/{sample}_sorted.bam"
+    shell:
+        "samtools sort -@ 1 {input} -o {output}"
+
+# INDEX BAM
+
+rule index_bam:
+    input:
+        "../aligned/{sample}_sorted.bam"
+    output:
+        "../aligned/{sample}_sorted.bam.bai"
+    shell:
+        "samtools index {input}"
+
+# FEATURE COUNTS
+
+rule featurecounts:
+    input:
+        expand("../aligned/{sample}_sorted.bam", sample=SAMPLES)
+    output:
+        "../counts/gene_counts.txt"
+    params:
+        gtf=config["reference"]["gtf"]
+    shell:
+        """
+        featureCounts -T 1 -p -B -C \
+        -a {params.gtf} \
+        -o {output} \
+        {input}
+        """
+
+# CLEAN COUNTS
+
+rule clean_counts:
+    input:
+        "../counts/gene_counts.txt"
+    output:
+        "../counts/clean_counts.txt"
+    shell:
+        "cut -f1,7- {input} > {output}"
+
+# DESEQ2 (R SCRIPT)
+
+rule deseq2:
+    input:
+        counts="../counts/clean_counts.txt",
+        metadata="../counts/metadata.txt"
+    output:
+        "../counts/deseq2_results.csv",
+        "../images/volcano_plot.png",
+        "../images/pca_plot.png",
+        "../images/heatmap.png"
+    script:
+        "scripts/deseq2.R"
